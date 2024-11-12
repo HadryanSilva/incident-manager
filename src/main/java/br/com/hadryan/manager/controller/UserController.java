@@ -1,6 +1,5 @@
 package br.com.hadryan.manager.controller;
 
-import br.com.hadryan.manager.mapper.request.UserPutRequest;
 import br.com.hadryan.manager.mapper.response.UserResponse;
 import br.com.hadryan.manager.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -17,12 +16,6 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> findById(@PathVariable Long id) {
         return ResponseEntity.ok(userService.findById(id));
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody UserPutRequest request) {
-        userService.update(request);
-        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
