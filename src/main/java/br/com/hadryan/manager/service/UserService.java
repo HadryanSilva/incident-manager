@@ -2,7 +2,6 @@ package br.com.hadryan.manager.service;
 
 import br.com.hadryan.manager.mapper.UserMapper;
 import br.com.hadryan.manager.mapper.request.UserPostRequest;
-import br.com.hadryan.manager.mapper.request.UserPutRequest;
 import br.com.hadryan.manager.mapper.response.UserResponse;
 import br.com.hadryan.manager.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -34,16 +33,6 @@ public class UserService {
         var user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         return userMapper.userToResponse(user);
-    }
-
-    public void update (UserPutRequest request) {
-        log.info("Updating user by id: {}", request.getId());
-        var userToUpdate = userRepository.findById(request.getId())
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        userToUpdate.setUsername(request.getUsername());
-        userToUpdate.setPassword(request.getPassword());
-        userToUpdate.setEmail(request.getEmail());
-        userRepository.save(userToUpdate);
     }
 
     public void delete(Long id) {
