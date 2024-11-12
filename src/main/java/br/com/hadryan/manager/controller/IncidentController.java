@@ -39,9 +39,9 @@ public class IncidentController {
         return ResponseEntity.created(URI.create("/api/v1/incidents/" + incident.getId())).body(incident);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody IncidentPutRequest request) {
-        incidentService.update(id, request);
+    @PutMapping
+    public ResponseEntity<Void> update(@RequestBody IncidentPutRequest request) {
+        incidentService.update(request);
         return ResponseEntity.noContent().build();
     }
 

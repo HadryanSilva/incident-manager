@@ -52,9 +52,9 @@ public class IncidentService {
         return incidentMapper.incidentToResponse(savedIncident);
     }
 
-    public void update(Long id, IncidentPutRequest request) {
-        log.info("Updating incident by id: {}", id);
-        var incidentToUpdate = incidentRepository.findById(id)
+    public void update(IncidentPutRequest request) {
+        log.info("Updating incident by id: {}", request.getId());
+        var incidentToUpdate = incidentRepository.findById(request.getId())
                 .orElseThrow(() -> new RuntimeException("Incident not found"));
         incidentToUpdate.setName(request.getName());
         incidentToUpdate.setDescription(request.getDescription());
