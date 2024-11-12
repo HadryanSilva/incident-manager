@@ -1,5 +1,6 @@
 package br.com.hadryan.manager.service;
 
+import br.com.hadryan.manager.exception.NotFoundException;
 import br.com.hadryan.manager.mapper.UserMapper;
 import br.com.hadryan.manager.mapper.request.UserPostRequest;
 import br.com.hadryan.manager.mapper.response.UserResponse;
@@ -31,14 +32,14 @@ public class UserService {
     public UserResponse findById(Long id) {
         log.info("Finding user by id: {}", id);
         var user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new NotFoundException("User not found"));
         return userMapper.userToResponse(user);
     }
 
     public void delete(Long id) {
         log.info("Deleting user by id: {}", id);
         var userToDelete = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new NotFoundException("User not found"));
         userRepository.delete(userToDelete);
     }
 

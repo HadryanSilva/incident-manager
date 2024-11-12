@@ -1,5 +1,6 @@
 package br.com.hadryan.manager.service;
 
+import br.com.hadryan.manager.exception.NotFoundException;
 import br.com.hadryan.manager.mapper.IncidentMapper;
 import br.com.hadryan.manager.mapper.request.IncidentPostRequest;
 import br.com.hadryan.manager.mapper.request.IncidentPutRequest;
@@ -32,7 +33,7 @@ public class IncidentService {
     public IncidentResponse findById(Long id) {
         log.info("Finding incident by id: {}", id);
         var incident = incidentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Incident not found"));
+                .orElseThrow(() -> new NotFoundException("Incident not found"));
         return incidentMapper.incidentToResponse(incident);
     }
 
@@ -55,7 +56,7 @@ public class IncidentService {
     public void update(IncidentPutRequest request) {
         log.info("Updating incident by id: {}", request.getId());
         var incidentToUpdate = incidentRepository.findById(request.getId())
-                .orElseThrow(() -> new RuntimeException("Incident not found"));
+                .orElseThrow(() -> new NotFoundException("Incident not found"));
         incidentToUpdate.setName(request.getName());
         incidentToUpdate.setDescription(request.getDescription());
         incidentToUpdate.setUpdatedAt(LocalDateTime.now());
@@ -65,7 +66,7 @@ public class IncidentService {
     public void delete(Long id) {
         log.info("Deleting incident by id: {}", id);
         var incidentToDelete = incidentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Incident not found"));
+                .orElseThrow(() -> new NotFoundException("Incident not found"));
         incidentRepository.delete(incidentToDelete);
     }
 
