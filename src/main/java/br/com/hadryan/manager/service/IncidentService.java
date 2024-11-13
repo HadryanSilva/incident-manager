@@ -5,6 +5,7 @@ import br.com.hadryan.manager.mapper.IncidentMapper;
 import br.com.hadryan.manager.mapper.request.IncidentPostRequest;
 import br.com.hadryan.manager.mapper.request.IncidentPutRequest;
 import br.com.hadryan.manager.mapper.response.IncidentResponse;
+import br.com.hadryan.manager.model.enums.IncidentStatus;
 import br.com.hadryan.manager.repository.IncidentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -49,6 +50,7 @@ public class IncidentService {
         log.info("Saving incident: {}", request.getName());
         var incidentToSave = incidentMapper.postToIncident(request);
         incidentToSave.setCreatedAt(LocalDateTime.now());
+        incidentToSave.setStatus(IncidentStatus.OPEN);
         var savedIncident = incidentRepository.save(incidentToSave);
         return incidentMapper.incidentToResponse(savedIncident);
     }
@@ -60,6 +62,7 @@ public class IncidentService {
         incidentToUpdate.setName(request.getName());
         incidentToUpdate.setDescription(request.getDescription());
         incidentToUpdate.setUpdatedAt(LocalDateTime.now());
+        incidentToUpdate.setStatus(request.getStatus());
         incidentRepository.save(incidentToUpdate);
     }
 

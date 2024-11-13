@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Log4j2
@@ -21,6 +22,7 @@ public class UserService {
 
     private final PasswordEncoder passwordEncoder;
 
+    @Transactional
     public UserResponse save(UserPostRequest request) {
         log.info("Saving user: {}", request.getUsername());
         var userToSave = userMapper.postToUser(request);
