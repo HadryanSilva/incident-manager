@@ -116,6 +116,7 @@ class IncidentControllerIT {
                 .id(1L)
                 .name("Incident 1 modified")
                 .description("Description of incident 1 modified")
+                .status(IncidentStatus.CLOSED)
                 .build();
 
         var entity = new HttpEntity<>(incidentToUpdate, headers);

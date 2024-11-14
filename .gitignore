@@ -33,5 +33,5 @@ build/
 .vscode/
 
 ### Security ###
-*.key
-*.pub
+#*.key
+#*.pub
