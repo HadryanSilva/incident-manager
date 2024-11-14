@@ -10,6 +10,7 @@ import br.com.hadryan.manager.model.enums.IncidentStatus;
 import br.com.hadryan.manager.repository.IncidentRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -43,6 +44,7 @@ class IncidentServiceTest {
         incidentResponses = getIncidentResponses();
     }
 
+    @DisplayName("Find all incidents successfully")
     @Test
     public void testFindAll() {
         when(incidentRepository.findAll()).thenReturn(incidents);
@@ -64,6 +66,7 @@ class IncidentServiceTest {
         });
     }
 
+    @DisplayName("Find incident by id successfully")
     @Test
     public void testFindById() {
         when(incidentRepository.findById(Mockito.anyLong()))
@@ -81,6 +84,7 @@ class IncidentServiceTest {
         Assertions.assertThat(incidentFound.getStatus()).isEqualTo(IncidentStatus.OPEN);
     }
 
+    @DisplayName("Save an incident successfully")
     @Test
     public void testSave() {
         var incidentPost = IncidentPostRequest.builder()
@@ -117,6 +121,7 @@ class IncidentServiceTest {
         Assertions.assertThat(incidentSaved.getStatus()).isEqualTo(IncidentStatus.OPEN);
     }
 
+    @DisplayName("Update an incident successfully")
     @Test
     public void testUpdate() {
         var incidentPut = IncidentPutRequest.builder()
@@ -145,8 +150,10 @@ class IncidentServiceTest {
         Assertions.assertThat(incidents.getFirst().getDescription()).isEqualTo("Description 1 Updated");
         Assertions.assertThat(incidents.getFirst().getStatus()).isEqualTo(IncidentStatus.CLOSED);
         Assertions.assertThat(incidents.getFirst().getUpdatedAt()).isNotNull();
+        Assertions.assertThat(incidents.getFirst().getClosedAt()).isNotNull();
     }
 
+    @DisplayName("Update when incident not found")
     @Test
     public void testUpdateWhenNotFoundIncident() {
         var incidentPut = IncidentPutRequest.builder()
@@ -164,6 +171,7 @@ class IncidentServiceTest {
                 .hasMessage("404 NOT_FOUND \"Incident not found\"");
     }
 
+    @DisplayName("Delete an incident successfully")
     @Test
     public void testDelete() {
         when(incidentRepository.findById(Mockito.anyLong()))

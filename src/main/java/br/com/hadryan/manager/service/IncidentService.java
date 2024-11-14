@@ -59,10 +59,14 @@ public class IncidentService {
         log.info("Updating incident by id: {}", request.getId());
         var incidentToUpdate = incidentRepository.findById(request.getId())
                 .orElseThrow(() -> new NotFoundException("Incident not found"));
+
         incidentToUpdate.setName(request.getName());
         incidentToUpdate.setDescription(request.getDescription());
         incidentToUpdate.setUpdatedAt(LocalDateTime.now());
         incidentToUpdate.setStatus(request.getStatus());
+        if (request.getStatus() == IncidentStatus.CLOSED) {
+            incidentToUpdate.setClosedAt(LocalDateTime.now());
+        }
         incidentRepository.save(incidentToUpdate);
     }
 
