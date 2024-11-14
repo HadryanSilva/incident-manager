@@ -1,6 +1,6 @@
 ## API de controle de Incidentes
 
-### Informações adicionais
+### Requisitos para execução da API
 - Para execução da aplicação e dos testes é necessário ter o Docker instalado e executando.
 
 ### Instruções para execução e testes da API
