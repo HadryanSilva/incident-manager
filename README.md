@@ -15,6 +15,28 @@
   ```bash
     mvn clean verify
   ```
+  
+- Este projeto está utilizando Spring Security, para autenticar-se será necessário cadastrar um usuário pelo Swagger, acessando o endpoint `POST /api/v1/auth/register`.
+  - Exemplo de payload para cadastro de usuário:
+    ```json
+    {
+      "username": "admin",
+      "password": "admin",
+       "email": "emailValido@email.com"
+    }
+    ```
+
+  - Após o cadastro do usuário, será necessário autenticar-se para obter o token de acesso, acessando o endpoint `POST /api/v1/auth/login`.
+    - Exemplo de payload para autenticação:
+      ```json
+      {
+        "username": "admin",
+        "password": "admin"
+      }
+      ```
+
+  - Após a autenticação, será necessário adicionar o token de acesso no Swagger, clicando no botão `Authorize` e informando o token no campo `Value` no formato `Bearer <token>`.
+  
 
 ### Tecnologias utilizadas
 - Java 21
@@ -23,6 +45,10 @@
 
 - Spring Boot 3.3.5
   - Utilizei o Spring Boot por ser um framework robusto e que facilita a criação de APIs REST
+
+
+- Spring Security
+  - Utilizei o Spring Security para implementar a autenticação da API
 
 
 - Maven
