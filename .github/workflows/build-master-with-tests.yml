@@ -1,4 +1,4 @@
-name: Build Master With Tests
+name: Build Before Merge in Master With Tests
 
 on:
   pull_request:
@@ -20,5 +20,5 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
-      - name: Execute Tests
+      - name: Execute Tests (Unit + Integration)
         run: mvn clean verify --file pom.xml --no-transfer-progress
