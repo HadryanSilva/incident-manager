@@ -11,6 +11,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 @RequiredArgsConstructor
 @Log4j2
 @Service
@@ -27,7 +29,9 @@ public class UserService {
         log.info("Saving user: {}", request.getUsername());
         var userToSave = userMapper.postToUser(request);
         userToSave.setPassword(passwordEncoder.encode(userToSave.getPassword()));
+        userToSave.setCreatedAt(LocalDateTime.now());
         var savedUser = userRepository.save(userToSave);
+        log.info("User saved successfully: {}", savedUser.getUsername());
         return userMapper.userToResponse(savedUser);
     }
 
