@@ -1,0 +1,22 @@
+INSERT INTO incident (name, description, created_at, updated_at, closed_at, status)
+VALUES
+    ('Incident 1', 'Description of incident 1', '2024-11-10 08:00:00', '2024-11-11 09:00:00', NULL, 'OPEN'),
+    ('Incident 2', 'Description of incident 2', '2024-11-10 08:00:00', '2024-11-11 09:30:00', NULL, 'IN_PROGRESS'),
+    ('Incident 3', 'Description of incident 3', '2024-11-10 08:00:00', '2024-11-11 10:00:00', '2024-11-12 11:00:00', 'CLOSED'),
+    ('Incident 4', 'Description of incident 4', '2024-11-10 09:00:00', '2024-11-11 11:00:00', NULL, 'OPEN'),
+    ('Incident 5', 'Description of incident 5', '2024-11-10 09:30:00', '2024-11-11 12:00:00', NULL, 'OPEN'),
+    ('Incident 6', 'Description of incident 6', '2024-11-10 10:00:00', '2024-11-12 08:15:00', NULL, 'IN_PROGRESS'),
+    ('Incident 7', 'Description of incident 7', '2024-11-10 11:00:00', '2024-11-12 08:30:00', '2024-11-13 09:00:00', 'CLOSED'),
+    ('Incident 8', 'Description of incident 8', '2024-11-10 11:30:00', '2024-11-12 09:00:00', NULL, 'OPEN'),
+    ('Incident 9', 'Description of incident 9', '2024-11-11 07:00:00', '2024-11-12 09:30:00', '2024-11-13 10:00:00', 'CLOSED'),
+    ('Incident 10', 'Description of incident 10', '2024-11-11 07:30:00', '2024-11-12 10:00:00', NULL, 'IN_PROGRESS'),
+    ('Incident 11', 'Description of incident 11', '2024-11-11 08:00:00', '2024-11-12 10:30:00', '2024-11-13 10:30:00', 'CLOSED'),
+    ('Incident 12', 'Description of incident 12', '2024-11-11 08:30:00', '2024-11-12 11:00:00', NULL, 'IN_PROGRESS'),
+    ('Incident 13', 'Description of incident 13', '2024-11-11 09:00:00', '2024-11-12 11:30:00', NULL, 'OPEN'),
+    ('Incident 14', 'Description of incident 14', '2024-11-11 09:30:00', '2024-11-12 12:00:00', NULL, 'IN_PROGRESS'),
+    ('Incident 15', 'Description of incident 15', '2024-11-11 10:00:00', '2024-11-12 12:30:00', NULL, 'IN_PROGRESS'),
+    ('Incident 16', 'Description of incident 16', '2024-11-11 10:30:00', '2024-11-12 13:00:00', NULL, 'OPEN'),
+    ('Incident 17', 'Description of incident 17', '2024-11-11 11:00:00', '2024-11-12 13:30:00', '2024-11-13 11:00:00', 'CLOSED'),
+    ('Incident 18', 'Description of incident 18', '2024-11-11 11:30:00', '2024-11-12 14:00:00', NULL, 'OPEN'),
+    ('Incident 19', 'Description of incident 19', '2024-11-11 12:00:00', '2024-11-12 14:30:00', NULL, 'OPEN'),
+    ('Incident 20', 'Description of incident 20', '2024-11-11 12:30:00', '2024-11-12 15:00:00', '2024-11-13 12:00:00', 'CLOSED');
