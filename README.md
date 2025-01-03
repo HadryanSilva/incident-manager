@@ -1,4 +1,4 @@
-## API de controle de Incidentes
+## Desafio Técnico - API de controle de Incidentes
 
 ### Requisitos para execução da API
 - Para execução da aplicação e dos testes é necessário ter o Docker instalado e executando.
